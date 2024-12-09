@@ -21,25 +21,21 @@ public class EndpointService : IEndpointService
         }
 
         _endpoints.Add(endpoint);
-        
-        Console.WriteLine(_endpoints);
     }
 
-    public void EditEndpoint(string endpointSerialNumber, Endpoint updatedEndpoint)
+    public void EditEndpoint(Endpoint endpoint, int switchState)
     {
-        var endpoint = FindEndpointBySerialNumber(endpointSerialNumber);
-        endpoint.SwitchState = updatedEndpoint.SwitchState;
+        endpoint.SwitchState = switchState;
     }
 
-    public void DeleteEndpoint(string serialNumber)
+    public void DeleteEndpoint(Endpoint endpoint)
     {
-        var endpoint = FindEndpointBySerialNumber(serialNumber);
         _endpoints.Remove(endpoint);
     }
 
-    public Endpoint FindEndpointBySerialNumber(string serialNumber)
+    public Endpoint FindEndpointBySerialNumber(string endpointSerialNumber)
     {
-        var endpoint = _endpoints.FirstOrDefault(e => e.EndpointSerialNumber == serialNumber);
+        var endpoint = _endpoints.FirstOrDefault(e => e.EndpointSerialNumber == endpointSerialNumber);
         if (endpoint == null)
         {
             throw new EndpointNotFoundException();
@@ -50,7 +46,6 @@ public class EndpointService : IEndpointService
 
     public List<Endpoint> ListAllEndpoints()
     {
-        Console.WriteLine(_endpoints);
         return _endpoints.OrderBy(e => e.EndpointSerialNumber).ToList();
     }
 }

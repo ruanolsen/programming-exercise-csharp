@@ -1,8 +1,8 @@
 ﻿namespace ProgrammingTest.Validators;
 
-public static class IntegerValidator
+internal static class IntegerValidator
 {
-    public static int ValidateInteger(string input, int minValue = 0)
+    internal static int ValidateInteger(string input, int minValue = 0)
     {
         if (!int.TryParse(input, out var value))
         {

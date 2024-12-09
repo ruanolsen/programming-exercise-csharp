@@ -51,7 +51,7 @@ namespace ProgrammingTest.Presentation
                                 StringValidator.ValidateString(Console.ReadLine() ?? string.Empty);
 
                             Console.WriteLine("Enter Switch State: ");
-                            var switchState = IntegerValidator.ValidateInteger(Console.ReadLine() ?? string.Empty);
+                            var switchState = SwitchStateValidator.ValidateSwitchState(Console.ReadLine() ?? string.Empty);
 
                             var endpoint = new Endpoint
                             {
@@ -98,7 +98,7 @@ namespace ProgrammingTest.Presentation
 
                             break;
                         default:
-                            Console.WriteLine("Invalid action. Please, try again:");
+                            Console.WriteLine("Invalid action. Please, try again.");
                             break;
                     }
                 }
@@ -107,6 +107,7 @@ namespace ProgrammingTest.Presentation
                     Console.WriteLine($"Error: {ex.Message}");
                 }
 
+                Console.WriteLine("\n");
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
             }

@@ -1,8 +1,8 @@
 ﻿namespace ProgrammingTest.Exceptions;
 
-public class EndpointNotFoundException : Exception
+internal sealed class EndpointNotFoundException : Exception
 {
-    public EndpointNotFoundException() : base("Endpoint not found.")
+    internal EndpointNotFoundException() : base("Endpoint not found.")
     {
     }
 }

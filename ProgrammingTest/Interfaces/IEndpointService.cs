@@ -5,8 +5,8 @@ namespace ProgrammingTest.Interfaces;
 public interface IEndpointService
 {
     void AddEndpoint(Endpoint endpoint);
-    void EditEndpoint(string endpointSerialNumber, Endpoint updatedEndpoint);
-    void DeleteEndpoint(string endpointSerialNumber);
+    void EditEndpoint(Endpoint endpoint, int switchState);
+    void DeleteEndpoint(Endpoint endpoint);
     Endpoint FindEndpointBySerialNumber(string endpointSerialNumber);
     List<Endpoint> ListAllEndpoints();
 }

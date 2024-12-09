@@ -1,8 +1,8 @@
 ﻿namespace ProgrammingTest.Exceptions;
 
-public class EndpointAlreadyExistsException : Exception
+internal sealed class EndpointAlreadyExistsException : Exception
 {
-    public EndpointAlreadyExistsException() : base("Endpoint already exists.")
+    internal EndpointAlreadyExistsException() : base("Endpoint already exists.")
     {
     }
 }

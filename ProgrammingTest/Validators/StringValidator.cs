@@ -1,8 +1,8 @@
 ﻿namespace ProgrammingTest.Validators;
 
-public static class StringValidator
+internal static class StringValidator
 {
-    public static string ValidateString(string input, int minLength = 1)
+    internal static string ValidateString(string input, int minLength = 1)
     {
         if (string.IsNullOrWhiteSpace(input) || input.Length < minLength)
         {
