@@ -12,7 +12,7 @@ internal static class IntegerValidator
         // I'm assuming that the numbers cannot be negative
         if (value < minValue)
         {
-            throw new ArgumentException($"Invalid input. The field must be an integer higher than 0.");
+            throw new ArgumentException("Invalid input. The field must be an integer higher than 0.");
         }
 
         return value;

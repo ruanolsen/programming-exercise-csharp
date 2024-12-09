@@ -11,7 +11,7 @@ internal static class SwitchStateValidator
         
         if (value < minValue || value > maxValue)
         {
-            throw new ArgumentException($"Invalid input. Switch State must be one of the following: 0 (Disconnected), 1 (Connected) or 2 (Armed).");
+            throw new ArgumentException("Invalid input. Switch State must be one of the following: 0 (Disconnected), 1 (Connected) or 2 (Armed).");
         }
 
         return value;
