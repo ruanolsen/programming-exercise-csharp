@@ -1,15 +1,14 @@
 ﻿using ProgrammingTest.Interfaces;
 using ProgrammingTest.Models;
 using ProgrammingTest.Exceptions;
-using System.Linq;
 
 namespace ProgrammingTest.Services;
 
-public class EndpointApi : IEndpointApi
+public class EndpointService : IEndpointService
 {
     private readonly List<Endpoint> _endpoints;
 
-    public EndpointApi()
+    public EndpointService()
     {
         _endpoints = new List<Endpoint>();
     }
@@ -18,19 +17,18 @@ public class EndpointApi : IEndpointApi
     {
         if (_endpoints.Any(e => e.EndpointSerialNumber == endpoint.EndpointSerialNumber))
         {
-            throw new InvalidInputException();
+            throw new EndpointAlreadyExistsException();
         }
 
         _endpoints.Add(endpoint);
+        
+        Console.WriteLine(_endpoints);
     }
 
     public void EditEndpoint(string endpointSerialNumber, Endpoint updatedEndpoint)
     {
-        var existingEndpoint = FindEndpointBySerialNumber(endpointSerialNumber);
-        existingEndpoint.MeterModelId = updatedEndpoint.MeterModelId;
-        existingEndpoint.MeterNumber = updatedEndpoint.MeterNumber;
-        existingEndpoint.MeterFirmwareVersion = updatedEndpoint.MeterFirmwareVersion;
-        existingEndpoint.SwitchState = updatedEndpoint.SwitchState;
+        var endpoint = FindEndpointBySerialNumber(endpointSerialNumber);
+        endpoint.SwitchState = updatedEndpoint.SwitchState;
     }
 
     public void DeleteEndpoint(string serialNumber)
@@ -44,14 +42,15 @@ public class EndpointApi : IEndpointApi
         var endpoint = _endpoints.FirstOrDefault(e => e.EndpointSerialNumber == serialNumber);
         if (endpoint == null)
         {
-            throw new EndpointNotFoundException($"Endpoint with serial number '{serialNumber}' not found.");
+            throw new EndpointNotFoundException();
         }
 
         return endpoint;
     }
 
-    public IEnumerable<Endpoint> ListAllEndpoints()
+    public List<Endpoint> ListAllEndpoints()
     {
-        return _endpoints.OrderBy(e => e.EndpointSerialNumber);
+        Console.WriteLine(_endpoints);
+        return _endpoints.OrderBy(e => e.EndpointSerialNumber).ToList();
     }
 }

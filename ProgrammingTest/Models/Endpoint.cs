@@ -8,7 +8,7 @@ public class Endpoint
     public required string MeterFirmwareVersion { get; set; }
     public required int SwitchState { get; set; }
 
-    // Overriding ToString() method, so I can return the data in a 'prettier' way
+    // Overriding ToString() method, so I can return the data in a compact way
     public override string ToString()
     {
         return
