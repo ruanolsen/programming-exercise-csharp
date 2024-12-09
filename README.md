@@ -16,9 +16,8 @@
 
 
 - 5 Unit tests are included, they are inside a dedicated folder (but in the same project/solution). To run the tests you can type the following command:
+`dotnet test`
 
-    
-    dotnet test
 
 - Other relevant comments are within the code
 
